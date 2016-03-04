@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Turtoga kids Graphics gr-v003 -20160204b -</title>
+<title>Turtoga kids Graphics gr-v004 -20160204b -default values if not give args -</title>
 
 </head>
 <body style="padding: 0; margin: 0">
@@ -83,6 +83,7 @@ var EPSILON = 0.00001;
 
 function forward(a) {
 	var delta = new Number(a[0]);
+	if(isNaN(a[0])) {delta=new Number('100');} //jon test
 	var an = tortuga_m.angulo * Math.PI / 180;
 	tortuga_m.dx = tortuga_m.px + Math.cos(an)*delta;
 	tortuga_m.dy = tortuga_m.py - Math.sin(an)*delta;
@@ -103,6 +104,7 @@ function backwards(a) {
 
 function right_turn(a) {
 	var delta = new Number(a[0]);
+	if(isNaN(a[0])) {delta=new Number('90');} //jon test
 	tortuga_m.dangulo = tortuga_m.angulo - delta;
 	
 	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
@@ -110,9 +112,11 @@ function right_turn(a) {
 };
 
 function left_turn(a) {
-	var delta = new Number(a[0]);
-	tortuga_m.dangulo = tortuga_m.angulo + delta;
 	
+	var delta = new Number(a[0]);
+	//alert(a[0]); //jon test
+	if(isNaN(a[0])) {delta=new Number('90');} //jon test
+	tortuga_m.dangulo = tortuga_m.angulo + delta;
 	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
 	figura.push(obj);
 };
@@ -224,6 +228,10 @@ var commands = [
 	return a;
 }},
 {nom: "ΚΑΘΑΡΙΣΜΟΣ", f: function(a) {
+	clear(a);	
+	return a;
+}},
+{nom: "ΚΟ", f: function(a) {
 	clear(a);	
 	return a;
 }},
