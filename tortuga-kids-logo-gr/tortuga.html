@@ -20,10 +20,10 @@
 ΑΠΛΗ ΕΚΔΟΣΗ ΤΗΣ logo ΓΙΑ ΜΙΚΡΑ ΠΑΙΔΙΑ Η' ΆΤΟΜΑ ΜΕ ΠΡΟΒΛΗΜΑΤΑ ΌΡΑΣΗΣ!<br><br>
 ΕΝΤΟΛΕΣ:
 <ul>
-<li><b>ΜΠΡΟΣΤΑ X ,ΜΠ χ</b>: ΜΠΡΟΣΤΑ Χ ΒΗΜΑΤΑ</li>
-<li><b>ΠΙΣΩ X , ΠΙ Χ</b>: ΠΙΣΩ Χ ΒΗΜΑΤΑ</li>
-<li><b>ΔΕΞΙΑ X , ΔΕ χ</b>: ΔΕΞΙΑ Χ ΜΟΙΡΕΣ</li>
-<li><b>ΑΡΙΣΤΕΡΑ X, ΑΡ χ</b>: ΑΡΙΣΤΕΡΑ Χ ΜΟΙΡΕΣ</li>
+<li><b>ΜΠΡΟΣΤΑ X ,ΜΠ χ ,FW</b>: ΜΠΡΟΣΤΑ Χ ΒΗΜΑΤΑ</li>
+<li><b>ΠΙΣΩ X , ΠΙ Χ ,BW</b>: ΠΙΣΩ Χ ΒΗΜΑΤΑ</li>
+<li><b>ΔΕΞΙΑ X , ΔΕ χ ,RT</b>: ΔΕΞΙΑ Χ ΜΟΙΡΕΣ</li>
+<li><b>ΑΡΙΣΤΕΡΑ X, ΑΡ χ ,LT</b>: ΑΡΙΣΤΕΡΑ Χ ΜΟΙΡΕΣ</li>
 
 <li><b>ΣΤΑ , ΑΟΡΑΤΟ-ΜΕΛΑΝΙ</b>: ΣΤΥΛΟ ΑΝΩ</li>
 <li><b>ΣΤΚ , ΟΡΑΤΟ-ΜΕΛΑΝΙ</b>: ΣΤΥΛΟ ΚΑΤΩ</li>
@@ -31,7 +31,8 @@
 <li><b>ΕΠΑΝΑΛΑΒΕ X</b>: ΠΧ ΕΠΑΝΑΛΑΒΕ 5 ΜΠ 10 ΔΕ 45</li>
 <li><b>clr , ΚΑΘΑΡΙΣΜΟΣ</b>: Clear everything and start over</li>
 </ul>
-F11 - fullscreen.<br><br>
+F11 - fullscreen.<br>
+Σημείωση: εαν δεν βάλετε αριθμό θα θεωρηθεί θεωρηθεί ότι προχωράτε 100pixels ή στρίβετε 90 μοίρες<br>
 Works on Google Chrome, Mozilla Firefox or any other standards compliant web browser.<br><br>
 This tool was made with the intent to help young kids to be introduced in the art of programming.<br><br>
 If you like it or find it useful you can donate with the button below. 
@@ -160,12 +161,19 @@ var commands = [
 	forward(a);
 	return a.slice(1);
 }},
-
+{nom: "FW", f: function (a) {
+	forward(a);
+	return a.slice(1);
+}},
 {nom: "ΠΙΣΩ", f: function(a) {
 	backwards(a);	
 	return a.slice(1);
 }},
 {nom: "ΠΙ", f: function(a) {
+	backwards(a);	
+	return a.slice(1);
+}},
+{nom: "BW", f: function(a) {
 	backwards(a);	
 	return a.slice(1);
 }},
@@ -177,11 +185,19 @@ var commands = [
 	right_turn(a);	
 	return a.slice(1);
 }},
+{nom: "RT", f: function(a) {
+	right_turn(a);	
+	return a.slice(1);
+}},
 {nom: "ΑΡΙΣΤΕΡΑ", f: function(a) {
 	left_turn(a);	
 	return a.slice(1);
 }},
 {nom: "ΑΡ", f: function(a) {
+	left_turn(a);	
+	return a.slice(1);
+}},
+{nom: "LT", f: function(a) {
 	left_turn(a);	
 	return a.slice(1);
 }},
