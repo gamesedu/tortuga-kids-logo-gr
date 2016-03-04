@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Turtle Graphics gr-v001 -20160204 -</title>
+<title>Turtoga kids Graphics gr-v003 -20160204b -</title>
 
 </head>
 <body style="padding: 0; margin: 0">
@@ -16,22 +16,22 @@
 <div style="position: fixed; right: 0px; top: 0px; width: 32px; height: 32px">
 <img src="cerrar.png" onclick="hideInfo();">
 </div>
-<h1><img src="tortuga.png" align="center" style="margin: 10px">Turtle Graphics</h1>
-Simple turtle graphics for kids!<br><br>
-Commands:
+<h1><img src="tortuga.png" align="center" style="margin: 10px">Turtle kids Graphics</h1>
+ΑΠΛΗ ΕΚΔΟΣΗ ΤΗΣ logo ΓΙΑ ΜΙΚΡΑ ΠΑΙΔΙΑ Η' ΆΤΟΜΑ ΜΕ ΠΡΟΒΛΗΜΑΤΑ ΌΡΑΣΗΣ!<br><br>
+ΕΝΤΟΛΕΣ:
 <ul>
-<li><b>ad X</b>: Advance X turtle units</li>
-<li><b>re X</b>: Reverse X turtle units</li>
-<li><b>ri X</b>: Turn right X degrees</li>
-<li><b>le X</b>: Turn left X degrees</li>
+<li><b>ΜΠΡΟΣΤΑ X ,ΜΠ χ</b>: ΜΠΡΟΣΤΑ Χ ΒΗΜΑΤΑ</li>
+<li><b>ΠΙΣΩ X , ΠΙ Χ</b>: ΠΙΣΩ Χ ΒΗΜΑΤΑ</li>
+<li><b>ΔΕΞΙΑ X , ΔΕ χ</b>: ΔΕΞΙΑ Χ ΜΟΙΡΕΣ</li>
+<li><b>ΑΡΙΣΤΕΡΑ X, ΑΡ χ</b>: ΑΡΙΣΤΕΡΑ Χ ΜΟΙΡΕΣ</li>
 
-<li><b>rise</b>: Rise the pencil</li>
-<li><b>lower</b>: Lower the pencil</li>
+<li><b>ΣΤΑ , ΑΟΡΑΤΟ-ΜΕΛΑΝΙ</b>: ΣΤΥΛΟ ΑΝΩ</li>
+<li><b>ΣΤΚ , ΟΡΑΤΟ-ΜΕΛΑΝΙ</b>: ΣΤΥΛΟ ΚΑΤΩ</li>
 
-<li><b>rep X</b>: Repeat X times the next commands</li>
-<li><b>clr</b>: Clear everything and start over</li>
+<li><b>ΕΠΑΝΑΛΑΒΕ X</b>: ΠΧ ΕΠΑΝΑΛΑΒΕ 5 ΜΠ 10 ΔΕ 45</li>
+<li><b>clr , ΚΑΘΑΡΙΣΜΟΣ</b>: Clear everything and start over</li>
 </ul>
-Hit F11 to go fullscreen.<br><br>
+F11 - fullscreen.<br><br>
 Works on Google Chrome, Mozilla Firefox or any other standards compliant web browser.<br><br>
 This tool was made with the intent to help young kids to be introduced in the art of programming.<br><br>
 If you like it or find it useful you can donate with the button below. 
@@ -45,7 +45,7 @@ All the proceedings will be used to help develop this tool further and help my o
 <img alt="" border="0" src="https://www.paypalobjects.com/WEBSCR-640-20110306-1/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 -->
-
+Η Ελληνική έκδοση μπορεί να βρεθει εδώ : <a href="https://github.com/plirof/tortuga-kids-gr">github : tortuga-kids-gr</a>
 All the code covered by the <a href="http://www.gnu.org/licenses/gpl.html">GPLv3 license</a>.<br><br>
 Developed by John Villar.<br><br>
 Twitter: <a href="http://twitter.com/johnvillarz">@johnvillarz</a><br>
@@ -81,8 +81,7 @@ var intervaloAnim = null;
 var intervaloRefresh = null;
 var EPSILON = 0.00001;
 
-var comandos = [
-{nom: "ΜΠΡΟΣΤΑ", f: function(a) {
+function forward(a) {
 	var delta = new Number(a[0]);
 	var an = tortuga_m.angulo * Math.PI / 180;
 	tortuga_m.dx = tortuga_m.px + Math.cos(an)*delta;
@@ -90,72 +89,35 @@ var comandos = [
 	
 	var obj = {x: tortuga_m.dx, y: tortuga_m.dy, a: tortuga_m.dangulo, t: dibujar};
 	figura.push(obj);
-	
-	return a.slice(1);
-}},
-{nom: "ΠΙΣΩ", f: function(a) {
+};
+
+function backwards(a) {
 	var delta = new Number(a[0]);
 	var an = tortuga_m.angulo * Math.PI / 180;
 	tortuga_m.dx = tortuga_m.px - Math.cos(an)*delta;
 	tortuga_m.dy = tortuga_m.py + Math.sin(an)*delta;
 	var obj = {x: tortuga_m.dx, y: tortuga_m.dy, a: tortuga_m.dangulo, t: dibujar};
 	figura.push(obj);
-	
-	return a.slice(1);
-}},
-{nom: "ΔΕΞΙΑ", f: function(a) {
+};
+
+
+function right_turn(a) {
 	var delta = new Number(a[0]);
 	tortuga_m.dangulo = tortuga_m.angulo - delta;
 	
 	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
 	figura.push(obj);
-	
-	return a.slice(1);
-}},
-{nom: "ΑΡΙΣΤΕΡΑ", f: function(a) {
+};
+
+function left_turn(a) {
 	var delta = new Number(a[0]);
 	tortuga_m.dangulo = tortuga_m.angulo + delta;
 	
 	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
 	figura.push(obj);
-	
-	return a.slice(1);
-}},
-{nom: "ΣΤΑ", f: function(a) {
-	dibujar = false;
-	
-	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
-	figura.push(obj);
-	
-	return a;
-}},
-{nom: "ΣΤΚ", f: function(a) {
-	dibujar = true;
-	
-	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
-	figura.push(obj);
-	
-	return a;
-}},
-{nom: "ΕΠΑΝΑΛΑΒΕ", f: function(a) {
-	var reps = new Number(a[0]);
-	
-	var b = a.slice(1);
-	var c = new Array();
-	
-	for (var i=0; i<reps; i++) {
-		c = c.concat(b);
-	}
-	
-	for (var i=0; i<c.length; i++) {
-		if ((c[i] == "rep")&&(c.length>i+1)) {
-			c[i+1] = "" +(new Number(c[i+1])-1);
-		}
-	}
-	
-	return c;
-}},
-{nom: "clr", f: function(a) {
+};
+
+function clear(a) {
 	pasoFigura = 0;
 	figura = new Array();
 
@@ -171,7 +133,102 @@ var comandos = [
 		
 	var obj = {x: tortuga_m.dx, y: tortuga_m.dy, a: tortuga_m.dangulo, t: dibujar};
 	figura.push(obj);
+};
+
+function pen_up(a) {
+	dibujar = false;	
+	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
+	figura.push(obj);	
+};
+
+function pen_down(a) {
+	dibujar = true;	
+	var obj = {x: tortuga_m.px, y: tortuga_m.py, a: tortuga_m.dangulo, t: dibujar};
+	figura.push(obj);
+};
+
+var commands = [
+{nom: "ΜΠΡΟΣΤΑ", f: function (a) {
+	forward(a);
+	return a.slice(1);
+}},
+{nom: "ΜΠ", f: function (a) {
+	forward(a);
+	return a.slice(1);
+}},
+
+{nom: "ΠΙΣΩ", f: function(a) {
+	backwards(a);	
+	return a.slice(1);
+}},
+{nom: "ΠΙ", f: function(a) {
+	backwards(a);	
+	return a.slice(1);
+}},
+{nom: "ΔΕΞΙΑ", f: function(a) {
+	right_turn(a);	
+	return a.slice(1);
+}},
+{nom: "ΔΕ", f: function(a) {
+	right_turn(a);	
+	return a.slice(1);
+}},
+{nom: "ΑΡΙΣΤΕΡΑ", f: function(a) {
+	left_turn(a);	
+	return a.slice(1);
+}},
+{nom: "ΑΡ", f: function(a) {
+	left_turn(a);	
+	return a.slice(1);
+}},
+{nom: "ΣΤΑ", f: function(a) {
+	pen_up(a);	
+	return a;
+}},
+{nom: "ΑΟΡΑΤΟ-ΜΕΛΑΝΙ", f: function(a) {
+	pen_up(a);	
+	return a;
+}},
+{nom: "ΣΤΚ", f: function(a) {
+	pen_down(a);	
+	return a;
+}},
+{nom: "ΟΡΑΤΟ-ΜΕΛΑΝΙ", f: function(a) {
+	pen_down(a);	
+	return a;
+}},
+{nom: "ΕΠΑΝΑΛΑΒΕ", f: function(a) {
+	var reps = new Number(a[0]);
 	
+	var b = a.slice(1);
+	var c = new Array();
+	
+	for (var i=0; i<reps; i++) {
+		c = c.concat(b);
+	}
+	
+	for (var i=0; i<c.length; i++) {
+		if ((c[i] == "ΕΠΑΝΑΛΑΒΕ")&&(c.length>i+1)) {
+			c[i+1] = "" +(new Number(c[i+1])-1);
+		}
+	}
+	
+	return c;
+}},
+{nom: "clr", f: function(a) {
+	clear(a);	
+	return a;
+}},
+{nom: "cls", f: function(a) {
+	clear(a);	
+	return a;
+}},
+{nom: "ΚΑΘΑΡΙΣΜΟΣ", f: function(a) {
+	clear(a);	
+	return a;
+}},
+{nom: "ΝΕΟ", f: function(a) {
+	clear(a);	
 	return a;
 }}
 ];
@@ -286,8 +343,8 @@ function ejecutar(comando) {
 		
 	while (ops.length>0) {
 		var ejecuto = false;
-		for (var i=0; i < comandos.length; i++) {
-			var cmd = comandos[i];
+		for (var i=0; i < commands.length; i++) {
+			var cmd = commands[i];
 			
 			if (cmd.nom.slice(0, ops[0].length).toUpperCase() == ops[0].toUpperCase()) {
 				ops = cmd.f(ops.slice(1));
@@ -313,17 +370,17 @@ function completarComando(comando) {
 	
 	if (ops.length>0) {
 		var com = ops[ops.length-1];
-		for (var i=0; i < comandos.length; i++) {
-			var cmd = comandos[i];
+		for (var i=0; i < commands.length; i++) {
+			var cmd = commands[i];
 			
-			if (cmd.nom.slice(0, com.length).toLowerCase() == com.toLowerCase()) {
+			if (cmd.nom.slice(0, com.length).toUpperCase() == com.toUpperCase()) {
 				return (ops.slice(0, ops.length-1).join(" ") + " " + cmd.nom).trim()+" ";
 			}
 		}
 	}
 	
 	return comando;
-}
+};
 
 document.onkeydown = function(ev) {
 	if (ev.keyCode == 8) { // Borrar
