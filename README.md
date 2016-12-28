@@ -1,6 +1,7 @@
 # jsturtlegraphics2013 / tortuga-kids-gr
-jsturtlegraphics20130419 got from sourceforge.
+
 ΑΠΛΗ ΕΚΔΟΣΗ ΤΗΣ logo ΓΙΑ ΜΙΚΡΑ ΠΑΙΔΙΑ Η' ΆΤΟΜΑ ΜΕ ΠΡΟΒΛΗΜΑΤΑ ΌΡΑΣΗΣ!
+
 (ΔΟΚΙΜΑΣΤΙΚΟ ΛΙΝΚ (dev) : http://gamesedu.github.io/tortuga-kids-logo-gr/index.html
 
 <img src="kidslogo_turtoga_big_fonts.jpg" />
@@ -11,3 +12,4 @@ All the code covered by the <a href="http://www.gnu.org/licenses/gpl.html">GPLv3
 Developed by John Villar.<br><br>
 Twitter: <a href="http://twitter.com/johnvillarz">@johnvillarz</a><br>
 E-mail: johnvillarzavatti [at] gmail [dot] com<br>
+Original jsturtlegraphics 20130419 got from sourceforge.
