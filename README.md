@@ -1,9 +1,9 @@
 # jsturtlegraphics2013 / tortuga-kids-gr
 jsturtlegraphics20130419 got from sourceforge.
 ΑΠΛΗ ΕΚΔΟΣΗ ΤΗΣ logo ΓΙΑ ΜΙΚΡΑ ΠΑΙΔΙΑ Η' ΆΤΟΜΑ ΜΕ ΠΡΟΒΛΗΜΑΤΑ ΌΡΑΣΗΣ!
+(ΔΟΚΙΜΑΣΤΙΚΟ ΛΙΝΚ (dev) : http://gamesedu.github.io/tortuga-kids-logo-gr/index.html
 
 <img src="kidslogo_turtoga_big_fonts.jpg" />
-(ΔΟΚΙΜΑΣΤΙΚΟ ΛΙΝΚ (dev) : http://gamesedu.github.io/tortuga-kids-logo-gr/tortuga-kids-logo-gr/tortuga.html
 It has very big fonts and graphics. Can be used for people with sight problems or very younh pupils.
 
 ΑΡΧΙΚΗ ΕΚΔΟΣΗ:
