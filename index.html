@@ -95,6 +95,7 @@ function forward(a) {
 
 function backwards(a) {
 	var delta = new Number(a[0]);
+	if(isNaN(a[0])) {delta=new Number('100');} //jon test 181120 to prevent turtle going to top corner if no arg is biven
 	var an = tortuga_m.angulo * Math.PI / 180;
 	tortuga_m.dx = tortuga_m.px - Math.cos(an)*delta;
 	tortuga_m.dy = tortuga_m.py + Math.sin(an)*delta;
