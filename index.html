@@ -1,12 +1,13 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Turtoga kids Graphics gr-v004b -181120a -default values if not give args -</title>
+<title>Turtoga kids Graphics gr-v004c -200404 trimmed spaces</title>
 <!--
 Changes:
-v004b 181120a - (tried) fixed backwards no arg bug
+-v004c -200404 trimmed spaces -so eg fw_ will not be wrong (_=space)
+-v004b 181120a - (tried) fixed default values if not give args
 
--->
+-->	
 </head>
 <body style="padding: 0; margin: 0">
 <canvas id="cnv" style="position: fixed; top: 0; left: 0">
@@ -99,7 +100,7 @@ function forward(a) {
 
 function backwards(a) {
 	var delta = new Number(a[0]);
-	if(isNaN(a[0])) {delta=new Number('100');} //jon test 181120 to prevent turtle going to top corner if no arg is biven
+	if(isNaN(a[0])) {delta=new Number('100');} //jon test 181120 to prevent turtle going to top corner if no arg is biven	
 	var an = tortuga_m.angulo * Math.PI / 180;
 	tortuga_m.dx = tortuga_m.px - Math.cos(an)*delta;
 	tortuga_m.dy = tortuga_m.py + Math.sin(an)*delta;
@@ -348,6 +349,7 @@ function animarTortuga() {
 };
 
 function ejecutar(comando) {
+	comando=comando.trim();//added by jon fo fix extra space 200404
 	var ops = comando.split(" ");
 
 	var t = tortuga;
@@ -526,6 +528,13 @@ function hideInfo() {
 actualizarConsola();
 
 </script>
-
+<!-- TogetherJS Collaboration -->
+<!-- example : URL should end in      www.domain.com/index.html#&togetherjs=mysession01   -->
+<script> /* 200331 -added by jon custom togetherjs hub*/
+TogetherJSConfig_hubBase = "https://togetherjs-jj.glitch.me";//temp free server -not 
+TogetherJSConfig_suppressJoinConfirmation=true;
+//TogetherJSConfig_toolName="dimotiko2";//Name to displey instead of togetherJS
+</script>
+<script DISABLEDsrc="https://togetherjs.com/togetherjs-min.js"></script>
 </body>
 </html>
